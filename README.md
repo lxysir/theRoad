@@ -5,13 +5,14 @@
 
 ##2016/09/02
 
-* learn Linux
-* learn Git
-* learn Python
+* learn Computer Networking--done@201607
+* learn Linux@niaoge--done@201608
+* learn Computer Science Introduce--done@201608
+* learn Programming Basic:Python--done@201608
+* learn Git and Github--done@20160902
+* learn DevelopWebApp with Flask--next
 * learn SDN
-* learn Flask
 * learn Openstark neuron
-* learn DevelopWebApp
-* itil
-* PMP
-* English
+* pass ITIL Foundation
+* pass PMP
+* practise English
