@@ -5,14 +5,49 @@
 
 ##2016/09/02
 
-* learn Computer Networking--done@201607
-* learn Linux@niaoge--done@201608
-* learn Computer Science Introduce--done@201608
-* learn Programming Basic:Python--done@201608
-* learn Git and Github--done@20160902
-* learn DevelopWebApp with Flask--next
-* learn SDN
-* learn Openstark neuron
+##Basic
+* Computer Networking(Book)--done@201607
+* Linux@niaoge--done@201608
+* Computer Science Introduce--done@201608
+* Programming Basic:Python--done@201608
+* Git and Github--done@20160902
+* Networking for Web Developers
+
+##Networking Study
+* Computer Networking(Georgia Tech/SDN/DCN/CDN)
+	* SDN with Open Source
+		* Openstark neuron with Open Source
+		
+* Introduction to Operating Systems
+	*Advanced Operating Systems
+
+##Backend Development Study
+* HTML and CSS basic
+* Javascript basic
+* Intro to JQuery
+* Intro to AJAX
+	* JavaScript Design Patterns
+		* Designing RESTful APIs
+
+* Intro to Relational Databases-SQL
+	* Sort and Search data in MongoDB(Python)
+		* Intro to Hadoop and MapReduce
+
+* Website development(Blog with Python Frask Framworks)
+	* Computer Programming Design
+	* Scale App Development via Python with Google App Engine
+		* Authentication & Authorization: OAuth
+
+##Data Science
+* Not Confirmed
+
+##Senior Study
+* Configuring Linux Web Servers
+* Intro to Algorithms
+* Intro to Information Security
+* Software Testing
+
+##Certificated
 * pass ITIL Foundation
 * pass PMP
 * practise English
