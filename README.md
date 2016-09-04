@@ -11,9 +11,12 @@
 * Computer Science Introduce--done@201608
 * Programming Basic:Python--done@201608
 * Git and Github--done@20160902
-* Networking for Web Developers
 
 ##Networking Study
+* Networking for Web Developers
+	* Configuring Linux Web Servers
+	* Designing RESTful APIs
+
 * Computer Networking(Georgia Tech/SDN/DCN/CDN)
 	* SDN with Open Source
 		* Openstark neuron with Open Source
@@ -27,8 +30,7 @@
 * Intro to JQuery
 * Intro to AJAX
 	* JavaScript Design Patterns
-		* Designing RESTful APIs
-
+		
 * Intro to Relational Databases-SQL
 	* Sort and Search data in MongoDB(Python)
 		* Intro to Hadoop and MapReduce
@@ -41,8 +43,7 @@
 ##Data Science
 * Not Confirmed
 
-##Senior Study
-* Configuring Linux Web Servers
+##Related Study
 * Intro to Algorithms
 * Intro to Information Security
 * Software Testing
