@@ -97,18 +97,15 @@ Freda likes to play Starfleet Commander, Ninja Hamsters, Seahorse Adventures."
 
 def create_data_structure(string_input):
     network = {}
-    friends = {}
-    games = {}
     data_per_user = string_input.split('.')
     for i in data_per_user:
         if ' is connected to' in i:
             username, connected_friends = seperate_names(i, ' is connected to')
-            friends['friends'] = connected_friends
-            network[username] = friends
+            network[username] = {}
+            network[username]['friends'] = connected_friends
         if ' likes to play' in i:
             username, linked_games = seperate_names(i, ' likes to play')
-            games['games'] = linked_games
-            network[username] = games
+            network[username]['games'] = linked_games
     return network
 
 
@@ -143,6 +140,8 @@ def seperate_names(user_data, include_string):
 
 
 def get_connections(network, user):
+    if not in_network(network, user):
+        return None
     return network[user]['friends']
 
 # -----------------------------------------------------------------------------
@@ -160,6 +159,8 @@ def get_connections(network, user):
 
 
 def get_games_liked(network, user):
+    if not in_network(network, user):
+        return None
     return network[user]['games']
 
 # -----------------------------------------------------------------------------
@@ -179,7 +180,7 @@ def get_games_liked(network, user):
 
 
 def add_connection(network, user_A, user_B):
-    if in_network(user_A) and in_network(user_B):
+    if in_network(network, user_A) and in_network(network, user_B):
         if user_B not in get_connections(user_A):
             network[user_A]['friends'].append(user_B)
         return network
@@ -213,10 +214,11 @@ def in_network(network, user):
 
 
 def add_new_user(network, user, games):
-    if not in_network(user):
-        games_dict = {}
-        games_dict['games'] = games
-        network[user] = games_dict
+    if not in_network(network, user):
+        user_dict = {}
+        user_dict['friends'] = []
+        user_dict['games'] = games
+        network[user] = user_dict
     return network
 
 # -----------------------------------------------------------------------------
@@ -240,13 +242,15 @@ def add_new_user(network, user, games):
 
 
 def get_secondary_connections(network, user):
-    first_connections = get_connections(network, user)
-    secondary_connections = []
-    for i in first_connections:
-        for j in get_connections[i]:
-            if j not in secondary_connections:
-                secondary_connections.append(j)
-    return secondary_connections
+    if in_network(network, user):
+        first_connections = get_connections(network, user)
+        secondary_connections = []
+        for i in first_connections:
+            for j in get_connections(network, i):
+                if j not in secondary_connections:
+                    secondary_connections.append(j)
+        return secondary_connections
+    return None
 
 # -----------------------------------------------------------------------------
 # count_common_connections(network, user_A, user_B):
@@ -263,7 +267,13 @@ def get_secondary_connections(network, user):
 
 
 def count_common_connections(network, user_A, user_B):
-    return 0
+    if in_network(network, user_A) and in_network(network, user_B):
+        count = 0
+        for i in get_connections(network, user_A):
+            if i in get_connections(network, user_B):
+                count += 1
+        return count
+    return False
 
 # -----------------------------------------------------------------------------
 # find_path_to_friend(network, user_A, user_B):
@@ -300,8 +310,25 @@ def count_common_connections(network, user_A, user_B):
 
 
 def find_path_to_friend(network, user_A, user_B):
-    # your RECURSIVE solution here!
+    path = [user_A] #初始化list
+    if in_network(network, user_A) and in_network(network, user_B):
+        return path_to_friend(path, network, user_A, user_B)
     return None
+
+
+# your RECURSIVE solution here!
+def path_to_friend(path, network, user_A, user_B):#定义递归函数
+    if user_B in get_connections(network, user_A):#基数，如果发现目标，即停止
+        path.append(user_B)
+        return path
+    for i in get_connections(network, user_A):
+        if i in path:
+            path = path[:-1]#如果已经找过，则跳过并回退list
+            continue
+        else:
+            path.append(i)#如果没有找过，则填进list
+            print(path, '<', get_connections(network, i))
+            return path_to_friend(path, network, i, user_B)
 
 # Make-Your-Own-Procedure (MYOP)
 # -----------------------------------------------------------------------------
@@ -320,7 +347,9 @@ net = create_data_structure(example_input)
 # print get_games_liked(net, "John")
 # print add_connection(net, "John", "Freda")
 # print add_new_user(net, "Debra", [])
-# print add_new_user(net, "Nick", ["Seven Schemers", "The Movie: The Game"]) # True
-#rint(get_secondary_connections(net, "Mecedes"))
-# print count_common_connections(net, "Mercedes", "John")
-# print find_path_to_friend(net, "John", "Ollie")
+# print(add_new_user(net, "Nick", ["Seven Schemers", "The Movie: The Game"])) # True
+# print(get_secondary_connections(net, "Nick"))
+# print(count_common_connections(net, "Mercedes", "John"))
+# print(get_connections(net, 'John'))
+# print(get_secondary_connections(net, 'John'))
+print(find_path_to_friend(net, "John", "Robin"))
